@@ -19,6 +19,9 @@ public class LanguageGreetingServiceConfig {
 	@Value("${listOfValues}")
 	private String[] valuesArray;
 	
+	@Value("${optional.param:defaultValue}")
+	private String optionalParam;
+	
 	@Bean
 	@ConditionalOnProperty(name = "language.name", havingValue="english", matchIfMissing = true)
 	public LanguageGreetingService englishGreetingService() {
@@ -37,6 +40,7 @@ public class LanguageGreetingServiceConfig {
 		System.out.println("stringValue: " + stringValue);
 		System.out.println("valueFromFile: " + valueFromFile);
 		System.out.println("valuesArray: " + valuesArray[0]);
+		System.out.println("optionalParam: " + optionalParam);
 	}
 
 }
